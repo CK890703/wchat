@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sy.mapper.sys.PubDictMapper">
+  <resultMap id="BaseResultMap" type="com.sy.domain.sys.PubDict">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="table_name" jdbcType="VARCHAR" property="tableName" />
+    <result column="column_name" jdbcType="VARCHAR" property="columnName" />
+    <result column="vcode" jdbcType="INTEGER" property="vcode" />
+    <result column="vname" jdbcType="VARCHAR" property="vname" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="isvalid" jdbcType="DECIMAL" property="isvalid" />
+    <result column="c_time" jdbcType="TIMESTAMP" property="cTime" />
+    <result column="m_time" jdbcType="TIMESTAMP" property="mTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, table_name, column_name, vcode, vname, remark, isvalid, c_time, m_time
+  </sql>
+
+  <select id="getList" parameterType="java.util.Map" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM pub_dict
+    WHERE isvalid = 1
+    <if test="tableName != null and tableName != 0">
+      and table_name = #{tableName,jdbcType=INTEGER}
+    </if>
+    <if test="columnName != null and columnName != 0">
+      and column_name = #{columnName,jdbcType=INTEGER}
+    </if>
+    order by id ASC
+  </select>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from pub_dict
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from pub_dict
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+  <insert id="insert" parameterType="com.sy.domain.sys.PubDict">
+    insert into pub_dict (
+      id, table_name, column_name,
+      vcode, vname, remark, 
+      isvalid, c_time, m_time
+      )
+    values (
+      #{id,jdbcType=BIGINT}, #{tableName,jdbcType=VARCHAR}, #{columnName,jdbcType=VARCHAR},
+      #{vcode,jdbcType=INTEGER}, #{vname,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{isvalid,jdbcType=DECIMAL}, #{cTime,jdbcType=TIMESTAMP}, #{mTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.sy.domain.sys.PubDict">
+    insert into pub_dict
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="tableName != null">
+        table_name,
+      </if>
+      <if test="columnName != null">
+        column_name,
+      </if>
+      <if test="vcode != null">
+        vcode,
+      </if>
+      <if test="vname != null">
+        vname,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="isvalid != null">
+        isvalid,
+      </if>
+      <if test="cTime != null">
+        c_time,
+      </if>
+      <if test="mTime != null">
+        m_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="tableName != null">
+        #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="columnName != null">
+        #{columnName,jdbcType=VARCHAR},
+      </if>
+      <if test="vcode != null">
+        #{vcode,jdbcType=INTEGER},
+      </if>
+      <if test="vname != null">
+        #{vname,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isvalid != null">
+        #{isvalid,jdbcType=DECIMAL},
+      </if>
+      <if test="cTime != null">
+        #{cTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mTime != null">
+        #{mTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.sy.domain.sys.PubDict">
+    update pub_dict
+    <set>
+      <if test="tableName != null">
+        table_name = #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="columnName != null">
+        column_name = #{columnName,jdbcType=VARCHAR},
+      </if>
+      <if test="vcode != null">
+        vcode = #{vcode,jdbcType=INTEGER},
+      </if>
+      <if test="vname != null">
+        vname = #{vname,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isvalid != null">
+        isvalid = #{isvalid,jdbcType=DECIMAL},
+      </if>
+      <if test="cTime != null">
+        c_time = #{cTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mTime != null">
+        m_time = #{mTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.sy.domain.sys.PubDict">
+    update pub_dict
+    set table_name = #{tableName,jdbcType=VARCHAR},
+      column_name = #{columnName,jdbcType=VARCHAR},
+      vcode = #{vcode,jdbcType=INTEGER},
+      vname = #{vname,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      isvalid = #{isvalid,jdbcType=DECIMAL},
+      c_time = #{cTime,jdbcType=TIMESTAMP},
+      m_time = #{mTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+</mapper>

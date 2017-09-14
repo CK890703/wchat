@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sy.mapper.business.DataSequenceMapper" >
+  <resultMap id="BaseResultMap" type="com.sy.domain.business.DataSequence" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="current_value" property="currentValue" jdbcType="BIGINT" />
+    <result column="increment" property="increment" jdbcType="TINYINT" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, name, current_value, increment
+  </sql>
+
+  <select id="getSequenceNum" statementType="CALLABLE">
+    {
+      call
+      getSequenceNum(#{seqname},#{min,mode=OUT,jdbcType=INTEGER},#{max,mode=OUT,jdbcType=INTEGER})
+    }
+  </select>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from data_sequence
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from data_sequence
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+  <insert id="insert" parameterType="com.sy.domain.business.DataSequence" >
+    insert into data_sequence (id, name, current_value, 
+      increment)
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{currentValue,jdbcType=BIGINT}, 
+      #{increment,jdbcType=TINYINT})
+  </insert>
+
+  <insert id="insertSelective" parameterType="com.sy.domain.business.DataSequence" >
+    insert into data_sequence
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="currentValue != null" >
+        current_value,
+      </if>
+      <if test="increment != null" >
+        increment,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="currentValue != null" >
+        #{currentValue,jdbcType=BIGINT},
+      </if>
+      <if test="increment != null" >
+        #{increment,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.sy.domain.business.DataSequence" >
+    update data_sequence
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="currentValue != null" >
+        current_value = #{currentValue,jdbcType=BIGINT},
+      </if>
+      <if test="increment != null" >
+        increment = #{increment,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.sy.domain.business.DataSequence" >
+    update data_sequence
+    set name = #{name,jdbcType=VARCHAR},
+      current_value = #{currentValue,jdbcType=BIGINT},
+      increment = #{increment,jdbcType=TINYINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+</mapper>
