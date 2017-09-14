@@ -1,0 +1,383 @@
+.required {
+    color: red;
+    font-size: 15px;
+    vertical-align: middle;
+}
+
+.bg-gray {
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #ececec;
+}
+
+.error {
+    color: red;
+}
+
+.fileupload-default {
+    color: #4169E1;
+}
+
+.fileupload-success {
+    color: #66CD00;
+}
+
+.fileupload-error {
+    color: red;
+}
+
+.default-file-class {
+    width: 98px;
+    height: 112px;
+}
+
+.file-class {
+    width: 50%;
+    height: 50%;
+    margin-left: 2%;
+    position: relative;
+}
+
+.checkform {
+    width: 100%;
+    height: 40px;
+    float: left;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.box_meddle {
+    width: 90%;
+    height: 300px;
+    border: 1px solid #d1d1d1;
+    margin-left: 5%;
+    margin-top: 1%;
+}
+
+.ad_detail {
+    width: 90%;
+    height: auto !important;
+    overflow: hidden;
+    min-height: 220px;
+    border: 1px solid #d1d1d1;
+    margin-left: 5%;
+    margin-top: 1%;
+}
+
+.ad_detail .label {
+    font-size: 16px;
+}
+
+.fill_l_l {
+    margin-left: 10px;
+}
+
+.fill_l_r {
+    margin-left: 10px;
+}
+
+.sub_p {
+    font-size: 18px;
+    font-family: "微软雅黑";
+    color: #333333;
+    text-indent: 4em;
+    margin-left: 10px;
+}
+
+.box_meddle .sub_p span {
+    font-family: Arial;
+}
+
+.money_p {
+    border-bottom: 1px solid #d1d1d1;
+    margin-left: 9%;
+    margin-right: 5%;
+    margin-top: 3%;
+    float: left;
+}
+
+.money_p p {
+    font-size: 30px;
+    font-family: Arial;
+    color: #00afff;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.money_p span {
+    font-size: 14px;
+    font-family: "微软雅黑";
+    color: #666666;
+    margin-left: 20px;
+    margin-top: 0px;
+    float: left;
+}
+
+.box_bottom {
+    width: 90%;
+    height: 400px;
+    margin-left: 5%;
+    margin-top: 10px;
+}
+
+.box_bottom .detail {
+    width: 100%;
+    height: 400px;
+    margin-bottom: 30px;
+    border: 1px solid #d1d1d1;
+}
+
+.chartdiv {
+
+}
+
+.tex_p {
+    font-size: 20px;
+    font-family: "微软雅黑";
+    color: #333333;
+    line-height: 24px;
+    text-indent: 3em;
+    width: 80%;
+    margin-top: 22px;
+    margin-left: 60px;
+}
+
+.tex_sp {
+    font-size: 12px;
+    color: #666666;
+    font-family: Arial;
+    margin-left: 10px;
+}
+
+.fail_text {
+    font-size: 12px;
+    color: #ffffff;
+    background: #ff453a;
+    margin-left: 10px;
+}
+
+.data_box_meddle {
+    width: 96%;
+    height: 220px;
+    border: 1px solid #d1d1d1;
+    margin-left: 1%;
+    margin-top: 0%;
+    margin-bottom: 1%;
+}
+
+.data_box_meddle .data_ww {
+    width: 92%;
+    height: 60%;
+    margin-left: 2%;
+    margin-right: 6%;
+    margin-top: 5%;
+}
+
+.data_box_meddle .data_ww .data_w {
+    border: 1px solid #d1d1d1;
+    width: 15%;
+    height: 60%;
+    margin-left: 4%;
+    margin-right: 6%;
+    margin-top: 2%;
+    float: left;
+}
+
+.data_box_meddle .data_ww .data_w .data_p {
+    border-bottom: 3px solid #a942ca;
+    margin-right: 5%;
+    margin-left: 28%;
+    margin-top: 3%;
+    float: left;
+}
+
+.data_box_meddle .data_ww .data_w .data_p p {
+    font-size: 16px;
+    font-family: Arial;
+    color: #00afff;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.data_box_meddle .data_ww .data_w .data_p span {
+    font-size: 16px;
+    font-family: "微软雅黑";
+    color: #666666;
+    margin-left: 1px;
+    margin-top: 0px;
+    float: left;
+}
+
+.data_box_meddle .data_total_top {
+    width: 96%;
+    margin-top: 1%;
+    margin-left: 1%;
+}
+
+.data_box_meddle .data_total_top .data_total_title {
+    margin-top: 1%;
+    margin-left: 1%;
+    font-size: 20px;
+    float: left;
+}
+
+.data_box_meddle .data_total_top .data_select_time {
+    font-size: 16px;
+    margin-right: 25px;
+    margin-top: 1%;
+    float: right;
+}
+
+.data_chart_box {
+    width: 96%;
+    border: 1px solid #d1d1d1;
+    margin-left: 1%;
+    margin-top: 1%;
+}
+
+.data_chart_box .data_chart_type .data_select_type {
+    font-size: 16px;
+    margin-right: 60px;
+    margin-top: 1%;
+    float: right;
+}
+
+/*分页样式表*/
+#J_pagination {
+    width: 100%;
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: row nowrap;
+    -webkit-flex-flow: row nowrap;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: flex-end;
+    -webkit-justify-content: flex-end;
+}
+
+.paging {
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: row nowrap;
+    -webkit-flex-flow: row nowrap;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+}
+
+.paging a {
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: row nowrap;
+    -webkit-flex-flow: row nowrap;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    font-size: 13px;
+    color: black;
+    height: 30px;
+    background: white;
+    border: solid 1px #e1e1e1;
+    padding: 0 10px;
+    text-decoration: none;
+}
+
+.paging a:hover {
+    text-decoration: none;
+}
+
+.paging a:active {
+    background: #00B4E8;
+    color: white;
+}
+
+.paging a.active {
+    background: #00B4E8;
+    color: white;
+}
+
+.cj_page_total {
+    margin-left: 10px;
+}
+
+.paging a.selected {
+    color: #428bca;
+    font-size:16px;
+}
+
+/*数据列表样式表*/
+.body_bg{
+    background:#F3F4FB;
+    padding:20px;
+}
+
+.table_body{
+    background:white;
+    margin-top: 0px;
+}
+
+.no-skin {
+    padding: 20px;
+    background: #F3F4FB;
+}
+
+#tdata{
+    margin-left: 8px;
+}
+
+.module_ico-home {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    background-image: url(sprite/gdt-toufang-global-20170118_21329.32@2x.png);
+    background-size: 171px 124px;
+    background-position: 0 0
+}
+
+.module_ico-generalize {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    background-image: url(sprite/gdt-toufang-global-20170118_21329.32@2x.png);
+    background-size: 171px 124px;
+    background-position: 0 -64px
+}
+
+.module_ico-sheet {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    background-image: url(sprite/gdt-toufang-global-20170118_21329.32@2x.png);
+    background-size: 171px 124px;
+    background-position: -32px -32px
+}
+
+.module_ico-finance {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    background-image: url(sprite/gdt-toufang-global-20170118_21329.32@2x.png);
+    background-size: 171px 124px;
+    background-position: -64px 0
+}
+
+.module_ico-tool {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    background-image: url(sprite/gdt-toufang-global-20170118_21329.32@2x.png);
+    background-size: 171px 124px;
+    background-position: -64px -64px
+}
+
+.module_ico-order {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    background-image: url(sprite/gdt-toufang-global-20170118_21329.32@2x.png);
+    background-size: 171px 124px;
+    background-position: -96px -32px
+}
+
+
