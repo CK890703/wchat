@@ -1,0 +1,29 @@
+;(function(global,factory){if(typeof module==="object"&&module&&typeof module.exports==="object"){module.exports=global.document?factory(global,true):function(w){if(!w.document){throw new Error("requires a window with a document");}
+    return factory(w);};}else if(typeof define==="function"){if(define.amd||define.cmd){define(function(){return factory(global,true);});}}else{factory(global);}})(typeof window!=="undefined"?window:this,function(window,noGlobal){try{var performanceApi={reportJSCache:function(){}},ieVersion=-1,performance=window.performance||false;var getIEVersion=function(){var userAgent=(navigator.userAgent).toLowerCase(),ieVersion;ieVersion=parseInt((/msie (\d+)/.exec(userAgent)||[])[1]);if(isNaN(ieVersion)){ieVersion=parseInt((/trident\/.*; rv:(\d+)/.exec(userAgent)||[])[1]);}
+    if(isNaN(ieVersion)){ieVersion=-1;}
+    return ieVersion;}
+    ieVersion=getIEVersion();if(performance&&typeof(performance.getEntriesByType)=='function'&&(ieVersion<0||ieVersion>9)){var getCookie=function(name){var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");if(arr=document.cookie.match(reg)){return unescape(arr[2]);}else{return'';}}
+        var getPingUrl=function(hottag){var pingUrl='',hottag=hottag||'',pathname=location.pathname||'',rand=Math.random();if(hottag&&pathname){pingUrl='http://pinghot.qq.com/pingd?dm=gdt.qq.com.hot&url='+pathname+'&tt=-&hottag='+hottag+'&hotx=9999&hoty=9999&rand='+rand;}
+            return pingUrl;}
+        var pingid=0;var addPing=function(url){var img=new Image(),id='prefetchPing_'+pingid,url=url||'';if(!url){return false;}
+            var clearPing=function(id){var $pingid=document.getElementById(id);$pingid?$pingid.parentNode.removeChild($pingid):'';}
+            img.src=url;img.id=id;img.style.display='none';img.style.width=0;img.style.height=0;img.onload=function(){clearPing(id);}
+            img.onerror=function(){clearPing(id);}
+            document.getElementsByTagName('body')[0].appendChild(img);pingid++;}
+        var addScript=function(opt){var config=opt||{},url=config.url||'',id=config.id||'',success=config.success||function(){},error=config.error||function(){},script=null;if(!url){return false;}
+            script=document.createElement('script');script.type='text/javascript';id?script.id=id:'';script.onload=success;script.onerror=error;script.src=url;document.getElementsByTagName('body')[0].appendChild(script);}
+        var jsonp=function(opt){var config=opt||{},url=config.url||'',data=config.data||{},success=config.success||function(){},id=config.id||'';var clearScript=function(id){setTimeout(function(){var jsonpScript=document.getElementById(id);jsonpScript?jsonpScript.parentNode.removeChild(jsonpScript):'';},1000)}
+            window.getAtlasPrefetchFiles=success;addScript({url:url,id:id,success:function(){clearScript(id);},error:function(){clearScript(id);}});}
+        performanceApi.reportJSCache=function(pageName,performanceAtlasVersion,customUrls){var pageName=pageName||'',entries=performance.getEntriesByType('resource')||[],entriesItemData={},cacheCount=0,totalCount=0,duration=0,theUrlData={},customUrls=customUrls||[],urls=[],loadKbPerMillSecond=4,loadTime=0,defaultLoadTime=20,atlasVersion=performanceAtlasVersion||'atlasV2';var jsonpId='getAtlasPrefetchFiles',rand=Math.random();jsonp({url:document.baseURI+'js/content.js?rand='+rand,data:{},id:jsonpId,success:function(result){var result=result||{},env=result.env||{},atlasVermap=result.atlasVermap||{},atlasV2Vermap=result.atlasV2Vermap||{},atlasPrefetchFiles=result.atlasPrefetchFiles||{},atlasV2PrefetchFiles=result.atlasV2PrefetchFiles||{};var defaultCssDomain='qzonestyle.gtimg.cn',defaultJsDomainn='i.gtimg.cn',ptisp=getCookie('ptisp')||'';var cssdomian=env.data&&env.data.cssdomain?env.data.cssdomain:(ptisp?ptisp+'.'+defaultCssDomain:''),jsdomian=env.data&&env.data.jsdomian?env.data.jsdomian:(ptisp?ptisp+'.'+defaultJsDomainn:''),serverEnv=env.data&&env.data.env?env.data.env:'formal';if(!pageName){return false;}
+            if(atlasVersion=='atlas'){urls=atlasPrefetchFiles[pageName]||[];}else{urls=atlasV2PrefetchFiles[pageName]||[];}
+            for(var i=0,len=customUrls.length;i<len;i++){if(customUrls[i]){urls.push(customUrls[i]);}}
+            if(urls.length<1||entries.length<1){return false;}
+            if(serverEnv!='formal'&&serverEnv!='preview'){for(var i=0,len=urls.length;i<len;i++){if(urls[i]&&urls[i]['file']&&urls[i]['file']=='/qzone/biz/gdt/hermes/comm/utils.all'){urls[i]['file']='/qzone/biz/gdt/hermes/comm/utils';}}}
+            var getUrlData=function(url,urls,domain){var url=url||'',urlDomain=domain||'',urls=urls||[],theUrlData=false,urlData={},finalUrl='';if(url&&urls.length>0){for(var i=0,len=urls.length;i<len;i++){urlData=urls[i];if(urlDomain&&urlData['file'].indexOf('http://')<0){finalUrl='http://'+urlDomain+urlData['file'];}else{finalUrl=urlData['file'];}
+                if(url.indexOf(finalUrl)==0&&url.indexOf('.js')>-1){theUrlData=urlData;break;}}}
+                return theUrlData;}
+            for(var i=0,len=entries.length;i<len;i++){(function(i){entriesItemData=entries[i];theUrlData=getUrlData(entriesItemData['name'],urls,jsdomian);duration=parseFloat(entriesItemData['duration'])||0;if(theUrlData){totalCount++;if(theUrlData['size']){loadTime=Math.ceil(theUrlData['size']/loadKbPerMillSecond);loadTime=loadTime<defaultLoadTime?defaultLoadTime:loadTime;}else{loadTime=defaultLoadTime;}
+                if(duration<=loadTime){cacheCount++;}}})(i);}
+            if(totalCount>0){addPing(getPingUrl('atlas_jscache.'+(pageName.replace(/\./gi,'_'))+'_'+totalCount+'.'+cacheCount));}}})}}
+    if(typeof noGlobal===typeof undefined){if(typeof(window.performanceApi)!='undefined'){window._performanceApi=performanceApi;}else{window.performanceApi=performanceApi;}}
+    return performanceApi;}catch(e){}});
